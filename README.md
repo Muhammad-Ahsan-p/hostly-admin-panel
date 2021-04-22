@@ -1,3 +1,12 @@
+# Hostly
+
+Hostly is an Online Platform for finding hostels near your location.
+
+### Authors
+
+1. Rizwan Amjad [Github](https://github.com/RizwanAmjad)
+2. Muhammad Ahsan [Github](https://github.com/Muhammad-Ahsan-p)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
