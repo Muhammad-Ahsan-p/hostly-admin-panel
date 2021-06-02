@@ -1,3 +1,25 @@
+
+/*-------------All colors---------------*/
+:root{
+  --color-1:crimson;
+  --color-2:#35b2f7ff;
+  --color-3:white;
+  
+}
+/*--------------All Fonts---------------*/
+:root{
+  --font-2:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 .statContainer {
   width: 100%;
+  background-color: var(--color-3);
+  text-align: center;
+  box-shadow: 2px 4px 9px 4px #999;
+  padding: 10px;
+}
+.statContainer > h2{
+  color: var(--color-2);
+  font-weight: 500;
 }

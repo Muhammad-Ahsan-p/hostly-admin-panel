@@ -1,33 +1,39 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../colors.css";
 import "./styles/navbar.css";
 
 class NavBar extends Component {
   state = {
     unwrappedClass: false,
+    rotate:false,
   };
   render() {
     return (
-      <div className="bgBlue navContainer">
-        <div className="banner">
-          <h1 className="fgWhite fontFamily title">Hostly</h1>
+      <div className="navContainer">
+          <h1 className="title">Hostly</h1>
           <div
-            className="icon"
+            className={"icon" +(this.state.rotate ? " rotate" : "")}
             onClick={(event) => {
               this.setState({ unwrappedClass: !this.state.unwrappedClass });
+              this.setState({ rotate:!this.state.rotate});
             }}
           ></div>
-        </div>
         <div
           className={
-            "menu bgBlue" + (this.state.unwrappedClass ? " unwrap" : "")
+            "menu" + (this.state.unwrappedClass ? " unwrap" : "")
           }
         >
-          <Link className="menuButton fgWhite" to="/home">
-            Home
+          <Link to="/home/overall-statistics" className="menuButton">
+            Overall Statistics
           </Link>
-          <Link className="menuButton fgWhite" to="/login">
+            
+          <Link to="/home/user-statistics" className="menuButton">
+            User Statistics
+          </Link>
+          <Link to="/home/hostly-ad-statistics" className="menuButton">
+            Ad Statistics
+          </Link>
+          <Link className="menuButton" to="/login">
             Sign Out
           </Link>
         </div>

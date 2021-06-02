@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import BarGraph from "./barGraphComponent";
 
 import "./styles/statistics.css";
-import BarGraph from "./barGraphComponent";
 
 class HostlyAdStatistics extends Component {
   state = {
@@ -21,8 +21,8 @@ class HostlyAdStatistics extends Component {
   render() {
     const { label, labels, data } = this.state;
     return (
-      <div>
-        Hostly Ad Statistics
+      <div className="statContainer">
+        <h2>Ad Statistics</h2>
         <BarGraph labels={labels} label={label} data={data} />
       </div>
     );

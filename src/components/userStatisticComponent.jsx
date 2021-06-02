@@ -36,8 +36,8 @@ class UserStatistics extends Component {
   render() {
     const { registers, logins } = this.state;
     return (
-      <div>
-        User Statistics
+      <div className="statContainer">
+        <h2>User Statistics</h2>
         <BarGraph
           labels={registers.labels}
           label={registers.label}

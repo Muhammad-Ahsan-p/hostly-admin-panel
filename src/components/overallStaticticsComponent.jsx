@@ -21,8 +21,8 @@ class OverallStatistics extends Component {
   render() {
     const { label, labels, data } = this.state;
     return (
-      <div>
-        Overall Statistics
+      <div className="statContainer">
+        <h2>Overall Statistics</h2>
         <BarGraph labels={labels} label={label} data={data} />
       </div>
     );
