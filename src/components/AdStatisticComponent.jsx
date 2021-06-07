@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import statisticService from "../services/statisticService";
 import BarGraph from "./barGraphComponent";
 
 import "./styles/statistics.css";
@@ -6,23 +7,33 @@ import "./styles/statistics.css";
 class HostlyAdStatistics extends Component {
   state = {
     labels: [
+      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
       "Saturday",
-      "Sunday",
     ],
     label: "Average Ads",
-    data: [1000, 5200, 520, 5400, 550, 4028, 9073],
+    data: [0, 0, 0, 0, 0, 0, 0],
   };
+
+  async componentDidMount() {
+    let { data } = this.state;
+    const { data: ads } = await statisticService.getAdStatistics();
+
+    for (const key of Object.keys(ads)) {
+      data[key] = ads[key];
+    }
+    this.setState({ data });
+  }
 
   render() {
     const { label, labels, data } = this.state;
     return (
       <div className="statContainer">
-        <h2>Ad Statistics</h2>
+        <h2>{label}</h2>
         <BarGraph labels={labels} label={label} data={data} />
       </div>
     );

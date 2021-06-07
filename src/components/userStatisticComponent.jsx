@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./styles/statistics.css";
 import BarGraph from "./barGraphComponent";
+import statisticService from "../services/statisticService";
 
 class UserStatistics extends Component {
   state = {
@@ -16,7 +17,7 @@ class UserStatistics extends Component {
         "Sunday",
       ],
       label: "Average Registers",
-      data: [1000, 5200, 520, 5400, 550, 4028, 9073],
+      data: [0, 0, 0, 0, 0, 0, 0],
     },
     logins: {
       labels: [
@@ -29,9 +30,25 @@ class UserStatistics extends Component {
         "Sunday",
       ],
       label: "Average Logins",
-      data: [1000, 5200, 520, 4028, 9073, 5400, 550],
+      data: [0, 0, 0, 0, 0, 0, 0],
     },
   };
+
+  async componentDidMount() {
+    const { registers, logins } = this.state;
+    const { data: login } = await statisticService.getLoginStatistics();
+    const { data: register } = await statisticService.getRegisterStatistics();
+
+    for (const key of Object.keys(login)) {
+      logins.data[key] = login[key];
+    }
+
+    for (const key of Object.keys(register)) {
+      registers.data[key] = register[key];
+    }
+
+    this.setState({ registers, logins });
+  }
 
   render() {
     const { registers, logins } = this.state;

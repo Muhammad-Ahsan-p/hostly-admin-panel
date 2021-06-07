@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 
 class BarGraph extends Component {
-  state = {
-    chartData: {
+  render() {
+    const chartData = {
       labels: this.props.labels,
       datasets: [
         {
@@ -21,17 +21,16 @@ class BarGraph extends Component {
           ],
         },
       ],
-    },
-  };
-  render() {
+    };
+
     return (
       <div className="chart">
         <Bar
-          data={this.state.chartData}
+          data={chartData}
           options={{
             title: {
               display: true,
-              text: "Largest Cities In ",
+              text: "",
               fontSize: 25,
             },
             legend: {

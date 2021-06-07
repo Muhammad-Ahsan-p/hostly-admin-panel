@@ -6,6 +6,7 @@ import UserStatistics from "../components/userStatisticComponent";
 import AdStatistics from "../components/AdStatisticComponent";
 
 import "./styles/home.css";
+import AddCity from "../components/addCity";
 
 class HomeScreen extends Component {
   state = {};
@@ -14,19 +15,17 @@ class HomeScreen extends Component {
       <div className="homeContainer">
         <NavBar />
         <div className="contentContainer">
-            <Switch>
-              <Route
-                path="/home/overall-statistics"
-                component={OverallStatistics}
-              />
-              <Route path="/home/user-statistics" component={UserStatistics} />
-              <Route
-                path="/home/hostly-ad-statistics"
-                component={AdStatistics}
-              />
-              <Redirect exact from="/home/" to="/home/overall-statistics" />
-              <Redirect to="/not-found" />
-            </Switch>
+          <Switch>
+            <Route
+              path="/home/overall-statistics"
+              component={OverallStatistics}
+            />
+            <Route path="/home/user-statistics" component={UserStatistics} />
+            <Route path="/home/hostly-ad-statistics" component={AdStatistics} />
+            <Route path="/home/add-city" component={AddCity} />
+            <Redirect exact from="/home/" to="/home/overall-statistics" />
+            <Redirect to="/not-found" />
+          </Switch>
         </div>
       </div>
     );
