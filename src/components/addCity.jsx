@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-
 import Joi from "joi-browser";
 import cityService from "../services/cityService";
+
+import "./styles/addcity.css";
 
 class AddCity extends Component {
   state = {
@@ -67,22 +68,20 @@ class AddCity extends Component {
     const { data, errors, cities } = this.state;
     return (
       <React.Fragment>
-        <form className="bgBlue center" onSubmit={this.handleSubmit}>
-          <div className="bgBlack createPostContainer">
-            <h2 className="fgWhite">Add City</h2>
-            <label htmlFor="city_name">City Name</label>
+        <form className="cityForm" onSubmit={this.handleSubmit}>
+          <div className="form">
+            <h2>Add City</h2>
             <input
               type="text"
               name="city_name"
               id="city_name"
-              placeholder="City"
+              placeholder="City!"
               value={data.city_name}
               onChange={this.handleChange}
             />
             <span className="validationError">
               {data.title && errors.title}
             </span>
-            <label htmlFor="description">Description</label>
             <textarea
               name="description"
               id="description"
@@ -93,7 +92,7 @@ class AddCity extends Component {
             <span className="validationError">
               {data.description && errors.description}
             </span>
-            <button className="bgRed fgWhite">Publish City</button>
+            <button>Publish City</button>
           </div>
         </form>
         <div>
