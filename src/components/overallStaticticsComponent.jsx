@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./styles/statistics.css";
 import BarGraph from "./barGraphComponent";
+import statisticService from "../services/statisticService";
 
 class OverallStatistics extends Component {
   state = {
@@ -15,8 +16,30 @@ class OverallStatistics extends Component {
       "Sunday",
     ],
     label: "Website Traffic",
-    data: [100, 230, 210, 400, 50, 1020, 900],
+    data: [0, 0, 0, 0, 0, 0, 0],
   };
+
+  async componentDidMount() {
+    const { data } = this.state;
+    const { data: login } = await statisticService.getLoginStatistics();
+    const { data: register } = await statisticService.getRegisterStatistics();
+
+    const { data: ads } = await statisticService.getAdStatistics();
+
+    for (const key of Object.keys(ads)) {
+      data[key] += ads[key];
+    }
+
+    for (const key of Object.keys(login)) {
+      data[key] = login[key];
+    }
+
+    for (const key of Object.keys(register)) {
+      data[key] = register[key];
+    }
+
+    this.setState({ data });
+  }
 
   render() {
     const { label, labels, data } = this.state;
